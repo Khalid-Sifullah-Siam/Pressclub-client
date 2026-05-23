@@ -68,7 +68,7 @@ export const projects = [
       },
       {
         name: "GitHub",
-        url: "https://github.com/moshiurrahmandeap11/client-bookshelf",
+        url: "https://github.com/Khalid-Sifullah-Siam/BookShelf",
       },
     ],
     screenshots: [
@@ -135,7 +135,7 @@ export const projects = [
       },
       {
         name: "GitHub",
-        url: "https://github.com/moshiurrahmandeap11/client-bdbook",
+        url: "https://github.com/Khalid-Sifullah-Siam/BD-Book",
       },
     ],
     screenshots: [
@@ -193,7 +193,7 @@ export const projects = [
       },
       {
         name: "GitHub",
-        url: "https://github.com/moshiurrahmandeap11/careerCrafter-client.git",
+        url: "https://github.com/Khalid-Sifullah-Siam/Career-Crafter",
       },
     ],
     screenshots: [
@@ -248,7 +248,7 @@ export const projects = [
       },
       {
         name: "GitHub",
-        url: "https://github.com/moshiurrahmandeap11/codeCircle-client",
+        url: "https://github.com/Khalid-Sifullah-Siam/Code-Circle",
       },
     ],
     screenshots: [
@@ -294,7 +294,7 @@ export const projects = [
       },
       {
         name: "GitHub",
-        url: "https://github.com/moshiurrahmandeap11/coursion-client",
+        url: "https://github.com/Khalid-Sifullah-Siam/Coursion",
       },
     ],
     screenshots: [
@@ -337,7 +337,7 @@ export const projects = [
       },
       {
         name: "GitHub",
-        url: "https://github.com/moshiurrahmandeap11/schoolmanagement-client",
+        url: "https://github.com/Khalid-Sifullah-Siam/School-and-college-management",
       },
     ],
     screenshots: [
@@ -414,7 +414,7 @@ export const projects = [
       },
       {
         name: "GitHub",
-        url: "https://github.com/moshiurrahmandeap11/projukti-sheba-client",
+        url: "https://github.com/Khalid-Sifullah-Siam/projukti-sheba",
       },
     ],
     screenshots: [
@@ -427,88 +427,5 @@ export const projects = [
       "https://i.postimg.cc/4NHp2qbQ/Screenshot-2026-04-08-202220.png",
       "https://i.postimg.cc/HxLywhks/Screenshot-2026-04-08-202233.png",
     ],
-  },
-  {
-    id: 9,
-    title: "Modern Personal Blog Website",
-    slug: "modern-personal-blog-website",
-    short_description:
-      "Modern Personal Blog Website is a platform for individuals to share their thoughts and ideas through blog posts.",
-    descriptioin:
-      "Modern Personal Blog Website is a platform for individuals to share their thoughts and ideas through blog posts. The website offers features such as customizable themes, social media integration, and a user-friendly content management system. With its modern design and comprehensive features, the website provides an engaging and personalized blogging experience for users.",
-    techStack: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB"],
-    features: [
-      "Customizable themes for personalized blog appearance",
-      "Social media integration for easy sharing of blog posts",
-      "User-friendly content management system for creating and managing blog posts",
-      "Responsive design for optimal viewing on various devices",
-      "Comprehensive features for bloggers to engage with their audience",
-    ],
-    challenges: [
-      "Designing a platform that allows for easy customization of blog themes",
-      "Creating a user-friendly content management system for bloggers",
-      "Integrating social media features seamlessly into the blogging platform",
-    ],
-    learnings: [
-      "Gained experience in building blogging platforms with customizable themes",
-      "Learned about the importance of social media integration in modern blogging",
-      "Improved skills in creating user-friendly content management systems with React.js and Tailwind CSS",
-    ],
-    links: [
-      {
-        name: "Live Demo",
-        url: "https://elmulforqaan.com/",
-      },
-      {
-        name: "GitHub",
-        url: "https://github.com/moshiurrahmandeap11/elmul-furqaan",
-      },
-    ],
-    screenshots: [
-      "https://i.postimg.cc/Gmr6xZZ2/Screenshot-2026-04-08-203318.png",
-      "https://i.postimg.cc/GpgNr99M/Screenshot-2026-04-08-203330.png",
-      "https://i.postimg.cc/dQyXPsF3/Screenshot-2026-04-08-203341.png",
-      "https://i.postimg.cc/65VmqMy5/Screenshot-2026-04-08-203350.png",
-      "https://i.postimg.cc/YS0nXk8t/Screenshot-2026-04-08-203359.png",
-      "https://i.postimg.cc/MH29KBw7/Screenshot-2026-04-08-203420.png",
-      "https://i.postimg.cc/bNRmpdBk/Screenshot-2026-04-08-203435.png",
-    ],
-  },
-  {
-    id: 10,
-    title: "Miverr - Freelance Marketplace",
-    slug: "miverr-freelance-marketplace",
-    short_description:
-      "Miverr is a freelance marketplace that connects freelancers with clients looking for their services.",
-    descriptioin:
-      "Miverr is a freelance marketplace that connects freelancers with clients looking for their services. The platform offers features such as service listings, secure payment processing, and a review system for both freelancers and clients. With its user-friendly interface and comprehensive features, Miverr facilitates seamless interactions between freelancers and clients, making it easier for users to find and access the services they need.",
-    techStack: ["React.js", "Tailwind CSS", "Node.js", "Express.js", "MongoDB"],
-    features: [
-      "Service listings for various freelance services",
-      "Secure payment processing for transactions between freelancers and clients",
-      "Review system for both freelancers and clients to provide feedback",
-      "User-friendly interface for easy navigation and interaction",
-    ],
-    challenges: [
-      "Designing a platform that effectively connects freelancers with clients",
-      "Creating a secure payment system for transactions",
-      "Implementing a review system that fosters trust and accountability",
-    ],
-    learnings: [
-      "Gained experience in building freelance marketplace platforms",
-      "Learned about the importance of secure payment processing in online marketplaces",
-      "Improved skills in creating user-friendly interfaces with React.js and Tailwind CSS",
-    ],
-    links: [
-      {
-        name: "Live Demo",
-        url: "https://miverr-7ac31.web.app/",
-      },
-    ],
-    screenshots: [
-      "https://i.postimg.cc/rpY8bVkb/Screenshot-2026-04-08-203837.png",
-      "https://i.postimg.cc/tR6XSGm8/Screenshot-2026-04-08-203907.png",
-      "https://i.postimg.cc/pLsxhWpm/Screenshot-2026-04-08-203920.png",
-    ],
-  },
+  }
 ];
