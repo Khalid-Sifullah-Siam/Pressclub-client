@@ -77,7 +77,6 @@ const Header = () => {
   }, []);
 
   const profilePicture = profileInfo?.profilePicture?.url;
-  const resumeUrl = profileInfo?.resume?.url;
 
   // Prevent body scroll when menu is open
   useEffect(() => {
@@ -210,7 +209,7 @@ const Header = () => {
                     href="/"
                     className="text-lg font-bold text-white hover:text-orange-400 transition-colors"
                   >
-                    siyam.dev
+                    Siam.dev
                   </Link>
                 </div>
                 <div>
@@ -238,15 +237,13 @@ const Header = () => {
                       </a>
                     </li>
                     <li className="group flex items-center gap-2 font-semibold text-gray-400 hover:text-white transition-all duration-200">
-                      <a
-                        href={resumeUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2"
+                      <Link
+                        href="/"
+                        className="flex items-center gap-2 text-gray-400 hover:text-white transition-all duration-200"
                       >
                         Resume
                         <CiShare1 className="transition-transform duration-200 group-hover:rotate-90" />
-                      </a>
+                      </Link>
                     </li>
                     <li>
                       <Link
@@ -344,7 +341,7 @@ const Header = () => {
                 <div className="flex items-center gap-2">
                   <FaArrowUp className="rotate-45 text-2xl text-orange-400" />
                   <Link href="/" className="text-base font-bold text-white">
-                    siyam.dev
+                    Siam.dev
                   </Link>
                 </div>
                 <div className="flex items-center gap-4">
