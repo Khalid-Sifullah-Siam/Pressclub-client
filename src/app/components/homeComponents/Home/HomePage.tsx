@@ -53,7 +53,7 @@ const HomePage = () => {
     }, []);
 
   const profilePicture = profileInfo?.profilePicture?.url;
-  const resumeUrl = "https://drive.google.com/uc?export=download&id=1GnICU7X49REJhuJbPo_p00zozy_sROts";
+  const resumeUrl = "https://drive.google.com/uc?export=download&id=11trv61EeIj2Wd7X_z_bn4BzjrZLowswj";
 
 
 
