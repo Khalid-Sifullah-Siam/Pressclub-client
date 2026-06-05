@@ -121,9 +121,8 @@ const HomePage = () => {
             <div className="flex items-center gap-2 bg-orange-600 hover:bg-orange-700 px-5 py-2.5 rounded-md font-semibold transition-all duration-300 cursor-pointer group">
               <a
                 href={resumeUrl}
+                download="Resume.pdf"
                 className="text-white"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 Get Resume
               </a>
