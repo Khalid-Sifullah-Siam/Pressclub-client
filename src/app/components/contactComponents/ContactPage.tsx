@@ -1,13 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChangeEvent, FormEvent, useState } from "react";
-import { IoIosArrowBack } from "react-icons/io";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-import axiosInstance from "../sharedComponents/AxiosInstance/AxiosInstance";
-
-import { RichTextEditor } from "richmoshiur";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import {
   FaEnvelope,
   FaWhatsapp,
@@ -15,320 +9,129 @@ import {
   FaFacebook,
 } from "react-icons/fa";
 
-const MySwal = withReactContent(Swal);
-
-// Form data type define
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}
-
-// API response type define
-interface ApiResponse {
-  success: boolean;
-  message: string;
-  data?: string | number;
-}
-
-// Error response type define
-interface ErrorResponse {
-  response?: {
-    data?: {
-      message?: string;
-    };
-  };
-  message?: string;
-}
-
 const ContactPage = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [loading, setLoading] = useState<boolean>(false);
-
-  // Handle input change with proper typing
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  // Handle RichTextEditor change with proper TypeScript typing
-  const handleMessageChange = (content: string): void => {
-    setFormData((prev: FormData) => ({
-      ...prev,
-      message: content,
-    }));
-  };
-
-  // Reset form
-  const handleReset = (): void => {
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
-  };
-
-  // Handle form submit
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    // Validation
-    if (
-      !formData.name.trim() ||
-      !formData.email.trim() ||
-      !formData.message.trim()
-    ) {
-      MySwal.fire({
-        icon: "warning",
-        title: "Oops...",
-        text: "Please fill in all required fields!",
-        background: "#1a1a1a",
-        color: "#fff",
-        confirmButtonColor: "#8b5cf6",
-        confirmButtonText: "Okay",
-      });
-      return;
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      MySwal.fire({
-        icon: "error",
-        title: "Invalid Email",
-        text: "Please enter a valid email address!",
-        background: "#1a1a1a",
-        color: "#fff",
-        confirmButtonColor: "#8b5cf6",
-        confirmButtonText: "Okay",
-      });
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const response = await axiosInstance.post<ApiResponse>(
-        "/contacts",
-        formData,
-      );
-
-      MySwal.fire({
-        icon: "success",
-        title: "Message Sent!",
-        text: "Thank you for reaching out. I'll get back to you soon!",
-        background: "#1a1a1a",
-        color: "#fff",
-        confirmButtonColor: "#8b5cf6",
-        confirmButtonText: "Awesome!",
-        timer: 3000,
-        timerProgressBar: true,
-      });
-
-      handleReset();
-    } catch (error: unknown) {
-      const err = error as ErrorResponse;
-      MySwal.fire({
-        icon: "error",
-        title: "Error!",
-        text:
-          err.response?.data?.message ||
-          err.message ||
-          "Something went wrong. Please try again later.",
-        background: "#1a1a1a",
-        color: "#fff",
-        confirmButtonColor: "#8b5cf6",
-        confirmButtonText: "Try Again",
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-black px-4 sm:px-6 lg:px-8 py-8">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl sm:text-4xl text-white font-bold py-4">
-          Contact
-        </h1>
-        <p className="text-xl sm:text-2xl text-gray-300 font-semibold py-4">
-          Get in touch before I write another line of code!
-        </p>
+    <div className="min-h-screen bg-black relative overflow-hidden">
+      {/* Background gradients */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-blue-900/20 via-[#0a0a0a] to-[#0a0a0a]" />
+      <div className="absolute top-0 left-0 w-150 h-150 bg-blue-600/10 blur-[150px] rounded-full animate-pulse" />
+      <div className="absolute bottom-0 right-0 w-150 h-150 bg-purple-600/10 blur-[150px] rounded-full animate-pulse delay-1000" />
 
-        {/* Quick Contact Options */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-8">
-          {/* Email */}
-          <a
-            href="mailto:khalidsiam1754@gmail.com"
-            className="flex flex-col items-center gap-3 p-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-blue-500 rounded-lg transition-all duration-200 group"
-          >
-            <FaEnvelope className="text-2xl text-blue-400 group-hover:scale-110 transition-transform" />
-            <span className="text-white font-semibold text-sm">Email</span>
-            <span className="text-gray-400 text-xs text-center">khalidsiam1754@gmail.com</span>
-          </a>
-
-          {/* WhatsApp */}
-          <a
-            href="https://wa.me/8801521745455"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center gap-3 p-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-green-500 rounded-lg transition-all duration-200 group"
-          >
-            <FaWhatsapp className="text-2xl text-green-400 group-hover:scale-110 transition-transform" />
-            <span className="text-white font-semibold text-sm">WhatsApp</span>
-            <span className="text-gray-400 text-xs text-center">01521745455</span>
-          </a>
-
-          {/* LinkedIn */}
-          <a
-            href="http://www.linkedin.com/in/khalid-sifullah-siam-s"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center gap-3 p-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-blue-600 rounded-lg transition-all duration-200 group"
-          >
-            <FaLinkedin className="text-2xl text-blue-600 group-hover:scale-110 transition-transform" />
-            <span className="text-white font-semibold text-sm">LinkedIn</span>
-            <span className="text-gray-400 text-xs text-center">Connect with me</span>
-          </a>
-
-          {/* Facebook */}
-          <a
-            href="https://www.facebook.com/khalid.sifullah.siam.2024"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center gap-3 p-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-blue-500 rounded-lg transition-all duration-200 group"
-          >
-            <FaFacebook className="text-2xl text-blue-500 group-hover:scale-110 transition-transform" />
-            <span className="text-white font-semibold text-sm">Facebook</span>
-            <span className="text-gray-400 text-xs text-center">Follow me</span>
-          </a>
-        </div>
-
-        <hr className="my-8 border-gray-800" />
-
-        <h2 className="text-2xl text-white font-bold py-4">Send a Message</h2>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-6 mt-8">
-          {/* Name Field */}
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-white font-semibold mb-2"
-            >
-              Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Your name, your fame"
-              className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
-              required
-            />
-          </div>
-
-          {/* Email Field */}
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-white font-semibold mb-2"
-            >
-              Email <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Where can I reach you back?"
-              className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors"
-              required
-            />
-            <p className="mt-2 text-sm text-gray-400">
-              Temporary emails are also accepted, unless you wish to hear back
-              😊
+      <div className="relative z-10 px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        <div className="max-w-6xl mx-auto">
+          {/* Header Section */}
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+              Let's Connect
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-300 mb-2">
+              Have a project in mind? Let's work together
             </p>
+            <div className="h-1 w-20 bg-linear-to-r from-orange-400 to-blue-500 mx-auto rounded-full" />
           </div>
 
-          {/* Message Field - RichTextEditor with TypeScript Support */}
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-white font-semibold mb-2"
+          {/* Contact Options Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16 lg:mb-24">
+            {/* Email Card */}
+            <a
+              href="mailto:khalidsiam1754@gmail.com"
+              className="group relative backdrop-blur-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-500/30 rounded-2xl p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 block"
             >
-              Message <span className="text-red-500">*</span>
-            </label>
-            <RichTextEditor
-              value={formData.message}
-              onChange={handleMessageChange}
-              placeholder="Your words, my inbox."
-            />
+              <div className="absolute inset-0 bg-linear-to-br from-blue-600/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="relative z-10 pointer-events-none">
+                <div className="mb-6 w-16 h-16 rounded-xl bg-linear-to-br from-blue-600/30 to-blue-400/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <FaEnvelope className="text-2xl text-blue-400 group-hover:text-blue-300" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Email</h3>
+                <p className="text-gray-400 text-sm mb-4">Send me an email directly</p>
+                <p className="text-blue-400 font-semibold text-sm break-all">khalidsiam1754@gmail.com</p>
+              </div>
+            </a>
+
+            {/* WhatsApp Card */}
+            <a
+              href="https://wa.me/8801521745455"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative backdrop-blur-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-green-500/30 rounded-2xl p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/10 hover:-translate-y-2"
+            >
+              <div className="absolute inset-0 bg-linear-to-br from-green-600/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="relative z-10">
+                <div className="mb-6 w-16 h-16 rounded-xl bg-linear-to-br from-green-600/30 to-green-400/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <FaWhatsapp className="text-2xl text-green-400 group-hover:text-green-300" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">WhatsApp</h3>
+                <p className="text-gray-400 text-sm mb-4">Quick chat on WhatsApp</p>
+                <p className="text-green-400 font-semibold text-sm">+880 1521 745455</p>
+              </div>
+            </a>
+
+            {/* LinkedIn Card */}
+            <a
+              href="http://www.linkedin.com/in/khalid-sifullah-siam-s"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative backdrop-blur-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-600/30 rounded-2xl p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-600/10 hover:-translate-y-2"
+            >
+              <div className="absolute inset-0 bg-linear-to-br from-blue-700/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="relative z-10">
+                <div className="mb-6 w-16 h-16 rounded-xl bg-linear-to-br from-blue-700/30 to-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <FaLinkedin className="text-2xl text-blue-500 group-hover:text-blue-400" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">LinkedIn</h3>
+                <p className="text-gray-400 text-sm mb-4">Connect professionally</p>
+                <p className="text-blue-500 font-semibold text-sm">View Profile</p>
+              </div>
+            </a>
+
+            {/* Facebook Card */}
+            <a
+              href="https://www.facebook.com/khalid.sifullah.siam.2024"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative backdrop-blur-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-500/30 rounded-2xl p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2"
+            >
+              <div className="absolute inset-0 bg-linear-to-br from-blue-600/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="relative z-10">
+                <div className="mb-6 w-16 h-16 rounded-xl bg-linear-to-br from-blue-600/30 to-blue-400/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <FaFacebook className="text-2xl text-blue-500 group-hover:text-blue-400" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Facebook</h3>
+                <p className="text-gray-400 text-sm mb-4">Follow me on Facebook</p>
+                <p className="text-blue-500 font-semibold text-sm">Follow</p>
+              </div>
+            </a>
           </div>
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]"
-          >
-            {loading ? (
-              <span className="flex items-center justify-center gap-2">
-                <svg
-                  className="animate-spin h-5 w-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-                Sending...
-              </span>
-            ) : (
-              "Submit"
-            )}
-          </button>
+          {/* Info Section */}
+          <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-8 lg:p-12 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center md:text-left">
+                <h3 className="text-lg font-bold text-white mb-2">Response Time</h3>
+                <p className="text-gray-400">Usually within 24 hours</p>
+              </div>
+              <div className="text-center md:text-left">
+                <h3 className="text-lg font-bold text-white mb-2">Availability</h3>
+                <p className="text-gray-400">Monday to Friday, 9 AM - 6 PM</p>
+              </div>
+              <div className="text-center md:text-left">
+                <h3 className="text-lg font-bold text-white mb-2">Best Way</h3>
+                <p className="text-gray-400">Email or WhatsApp preferred</p>
+              </div>
+            </div>
+          </div>
 
-          {/* Reset Button */}
-          <button
-            type="button"
-            onClick={handleReset}
-            className="w-full bg-gray-900 hover:bg-gray-800 border border-gray-800 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
-          >
-            Reset
-          </button>
-        </form>
-      </div>
-      <div className="flex py-8 items-center justify-between">
-        <div className="flex items-center gap-2 px-4 py-2 rounded-md hover:bg-gray-900 cursor-pointer transition-colors">
-          <IoIosArrowBack className="text-white" />
-          <Link href="/experience" className="text-white font-bold">
-            Experience
-          </Link>
+          {/* Navigation */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 py-8 border-t border-white/10">
+            <Link href="/experience" className="flex items-center gap-2 px-6 py-3 rounded-lg hover:bg-white/5 transition-all duration-200 group">
+              <IoIosArrowBack className="text-white group-hover:-translate-x-1 transition-transform" />
+              <span className="text-white font-bold">Experience</span>
+            </Link>
+            <Link href="/skills-tools" className="flex items-center gap-2 px-6 py-3 rounded-lg hover:bg-white/5 transition-all duration-200 group">
+              <span className="text-white font-bold">Skills & Tools</span>
+              <IoIosArrowForward className="text-white group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </div>
       </div>
     </div>
