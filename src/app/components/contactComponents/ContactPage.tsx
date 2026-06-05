@@ -8,6 +8,12 @@ import withReactContent from "sweetalert2-react-content";
 import axiosInstance from "../sharedComponents/AxiosInstance/AxiosInstance";
 
 import { RichTextEditor } from "richmoshiur";
+import {
+  FaEnvelope,
+  FaWhatsapp,
+  FaLinkedin,
+  FaFacebook,
+} from "react-icons/fa";
 
 const MySwal = withReactContent(Swal);
 
@@ -157,6 +163,59 @@ const ContactPage = () => {
         <p className="text-xl sm:text-2xl text-gray-300 font-semibold py-4">
           Get in touch before I write another line of code!
         </p>
+
+        {/* Quick Contact Options */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-8">
+          {/* Email */}
+          <a
+            href="mailto:khalidsiam1754@gmail.com"
+            className="flex flex-col items-center gap-3 p-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-blue-500 rounded-lg transition-all duration-200 group"
+          >
+            <FaEnvelope className="text-2xl text-blue-400 group-hover:scale-110 transition-transform" />
+            <span className="text-white font-semibold text-sm">Email</span>
+            <span className="text-gray-400 text-xs text-center">khalidsiam1754@gmail.com</span>
+          </a>
+
+          {/* WhatsApp */}
+          <a
+            href="https://wa.me/8801521745455"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center gap-3 p-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-green-500 rounded-lg transition-all duration-200 group"
+          >
+            <FaWhatsapp className="text-2xl text-green-400 group-hover:scale-110 transition-transform" />
+            <span className="text-white font-semibold text-sm">WhatsApp</span>
+            <span className="text-gray-400 text-xs text-center">01521745455</span>
+          </a>
+
+          {/* LinkedIn */}
+          <a
+            href="http://www.linkedin.com/in/khalid-sifullah-siam-s"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center gap-3 p-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-blue-600 rounded-lg transition-all duration-200 group"
+          >
+            <FaLinkedin className="text-2xl text-blue-600 group-hover:scale-110 transition-transform" />
+            <span className="text-white font-semibold text-sm">LinkedIn</span>
+            <span className="text-gray-400 text-xs text-center">Connect with me</span>
+          </a>
+
+          {/* Facebook */}
+          <a
+            href="https://www.facebook.com/khalid.sifullah.siam.2024"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center gap-3 p-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 hover:border-blue-500 rounded-lg transition-all duration-200 group"
+          >
+            <FaFacebook className="text-2xl text-blue-500 group-hover:scale-110 transition-transform" />
+            <span className="text-white font-semibold text-sm">Facebook</span>
+            <span className="text-gray-400 text-xs text-center">Follow me</span>
+          </a>
+        </div>
+
+        <hr className="my-8 border-gray-800" />
+
+        <h2 className="text-2xl text-white font-bold py-4">Send a Message</h2>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6 mt-8">

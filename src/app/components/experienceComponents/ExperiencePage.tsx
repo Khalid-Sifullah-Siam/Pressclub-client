@@ -13,32 +13,33 @@ const ExperiencePage = () => {
         "Working independently with clients worldwide, successfully delivering 20+ projects ranging from dynamic web applications to custom APIs — all from home.",
     },
     {
-      title: "Full Stack Web Developer",
-      company: "Projukti Sheba",
-      type: "Contractual",
-      period: "Jan. 2026 - Present",
-      latest: true,
-      description:
-        "Currently responsible for developing responsive front-end designs, architecting RESTful APIs, and integrating external services — ensuring high-quality delivery under a contractual engagement.",
-    },
-    {
-      title: "Full Stack Web Developer",
-      company: "Projukti Sheba",
-      type: "Remote",
-      period: "Jun. 2025 - Dec. 2025",
-      latest: false,
-      description:
-        "Designed responsive front-end interfaces, built RESTful APIs, and integrated third-party services to deliver seamless user experiences in a fully remote environment.",
-    },
-    {
-      title: "Full Stack Web Developer",
-      company: "Projukti Sheba",
+      title: "Freelance Web Developer",
+      company: "Self-Employed",
       type: null,
-      period: "Jan. 2025 - Jun. 2025",
+      period: "Jun. 2025 - Present",
       latest: false,
       description:
-        "Developed and maintained modern web applications using the MERN stack — MongoDB, Express.js, React.js, and Node.js — contributing to scalable and performant full-stack solutions.",
+        "Working independently with clients worldwide, successfully delivering 20+ projects ranging from dynamic web applications to custom APIs — all from home.",
     },
+    {
+      title: "Freelance Web Developer",
+      company: "Self-Employed",
+      type: null,
+      period: "Jun. 2025 - Present",
+      latest: false,
+      description:
+        "Working independently with clients worldwide, successfully delivering 20+ projects ranging from dynamic web applications to custom APIs — all from home.",
+    },
+    {
+      title: "Freelance Web Developer",
+      company: "Self-Employed",
+      type: null,
+      period: "Jun. 2025 - Present",
+      latest: false,
+      description:
+        "Working independently with clients worldwide, successfully delivering 20+ projects ranging from dynamic web applications to custom APIs — all from home.",
+    },
+    
   ];
 
   return (

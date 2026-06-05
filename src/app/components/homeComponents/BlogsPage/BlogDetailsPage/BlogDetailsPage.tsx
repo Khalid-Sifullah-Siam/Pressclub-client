@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import axiosInstance from "@/app/components/sharedComponents/AxiosInstance/AxiosInstance";
 import Link from "next/link";
 import {
     FiArrowLeft,
@@ -26,39 +25,21 @@ import {
     FaFacebookMessenger
 } from "react-icons/fa6";
 import Image from "next/image";
-
-interface Blog {
-    _id: string;
-    title: string;
-    content: string;
-    author: string;
-    description: string;
-    thumbnail?: {
-        url: string;
-        publicId: string;
-        mediaType: string;
-    };
-    media?: {
-        url: string;
-        publicId: string;
-        mediaType: string;
-    };
-    createdAt: string;
-    updatedAt: string;
-}
+import { BLOGS, Blog } from "../blogData";
 
 const BlogDetailsPage = () => {
     const { id } = useParams();
     const router = useRouter();
     const [blog, setBlog] = useState<Blog | null>(null);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [showShareMenu, setShowShareMenu] = useState(false);
     const [copied, setCopied] = useState(false);
 
     useEffect(() => {
-        if (id) {
-            fetchBlog();
+        if (typeof id === "string") {
+            const foundBlog = BLOGS.find((item) => item._id === id);
+            setBlog(foundBlog || null);
+            setError(foundBlog ? null : "The requested blog could not be found.");
         }
     }, [id]);
 
@@ -109,20 +90,6 @@ const BlogDetailsPage = () => {
             if (canonical && typeof window !== 'undefined') canonical.setAttribute('href', window.location.href);
         }
     }, [blog]);
-
-    const fetchBlog = async () => {
-        try {
-            setLoading(true);
-            const res = await axiosInstance.get(`/blogs/${id}`);
-            setBlog(res.data.data);
-            setError(null);
-        } catch (error: any) {
-            console.log(error);
-            setError("Failed to load blog details. Please try again.");
-        } finally {
-            setLoading(false);
-        }
-    };
 
     const formatDate = (dateString: string) => {
         return new Date(dateString).toLocaleDateString("en-US", {
@@ -217,21 +184,6 @@ const BlogDetailsPage = () => {
             }
         });
     };
-
-    if (loading) {
-        return (
-            <div className="min-h-screen bg-[#0a0f1e] flex items-center justify-center">
-                <div className="flex flex-col items-center gap-4">
-                    <div className="relative">
-                        <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-                            <div className="animate-spin rounded-full h-8 w-8 border-[3px] border-white/20 border-t-blue-400" />
-                        </div>
-                    </div>
-                    <p className="text-white/60 text-sm">Loading article...</p>
-                </div>
-            </div>
-        );
-    }
 
     if (error || !blog) {
         return (
@@ -406,7 +358,7 @@ const BlogDetailsPage = () => {
                                     width={1920}
                                     height={1080}
                                     quality={100}
-                                    className="w-full h-75 sm:h-100 md:h-125 object-cover"
+                                    className="w-full h-75 sm:h-100 md:h-125 object-contain"
                                     loading="lazy"
                                 />
                             </figure>
@@ -439,7 +391,7 @@ const BlogDetailsPage = () => {
                                         width={1920}
                                         height={1080}
                                         quality={100}
-                                        className="w-full h-auto"
+                                        className="w-full h-auto object-contain"
                                         loading="lazy"
                                     />
                                 )}

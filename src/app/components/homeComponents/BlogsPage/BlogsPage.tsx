@@ -1,52 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import axiosInstance from "@/app/components/sharedComponents/AxiosInstance/AxiosInstance";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
-interface Blog {
-    _id: string;
-    title: string;
-    content: string;
-    description: string;
-    author: string;
-    thumbnail?: {
-        url: string;
-    };
-    media?: {
-        url: string;
-        mediaType: string;
-    };
-    createdAt: string;
-}
+import { BLOGS, Blog } from "./blogData";
 
 const BlogsPage = () => {
-    const [blogs, setBlogs] = useState<Blog[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [blogs, setBlogs] = useState<Blog[]>(BLOGS);
     const [searchTerm, setSearchTerm] = useState("");
     const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
     const [currentPage, setCurrentPage] = useState(1);
     const blogsPerPage = 6;
-
-    useEffect(() => {
-        fetchBlogs();
-    }, []);
-
-    const fetchBlogs = async () => {
-        try {
-            setLoading(true);
-            const res = await axiosInstance.get("/blogs");
-            setBlogs(res.data.data);
-            setError(null);
-        } catch (error: any) {
-            console.log(error);
-            setError("Failed to load blogs. Please try again later.");
-        } finally {
-            setLoading(false);
-        }
-    };
 
     // Filter and sort blogs
     const filteredAndSortedBlogs = blogs
@@ -94,50 +58,6 @@ const BlogsPage = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    if (loading) {
-        return (
-            <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center relative overflow-hidden">
-                {/* Background Effects */}
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-blue-900/20 via-[#0a0f1e] to-[#0a0f1e]" />
-                <div className="absolute top-0 left-0 w-150 h-150 bg-blue-600/10 blur-[150px] rounded-full animate-pulse" />
-                <div className="absolute bottom-0 right-0 w-150 h-150 bg-purple-600/10 blur-[150px] rounded-full animate-pulse delay-1000" />
-
-                <div className="relative z-10 flex flex-col items-center gap-6">
-                    <div className="relative">
-                        <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-                            <div className="animate-spin rounded-full h-10 w-10 border-[3px] border-white/20 border-t-white" />
-                        </div>
-                    </div>
-                    <div className="text-center">
-                        <h3 className="text-white text-lg font-medium mb-2">Loading Blogs</h3>
-                        <p className="text-white/50 text-sm">Fetching amazing content for you...</p>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
-    if (error) {
-        return (
-            <div className="min-h-screen bg-[#0a0f1e] flex items-center justify-center p-4">
-                <div className="max-w-md w-full backdrop-blur-xl bg-white/5 border border-red-500/20 rounded-3xl p-8 text-center">
-                    <div className="w-16 h-16 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center mx-auto mb-6">
-                        <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                        </svg>
-                    </div>
-                    <h3 className="text-white text-lg font-semibold mb-2">Oops! Something went wrong</h3>
-                    <p className="text-white/60 text-sm mb-6">{error}</p>
-                    <button
-                        onClick={fetchBlogs}
-                        className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-all duration-300 transform hover:scale-105"
-                    >
-                        Try Again
-                    </button>
-                </div>
-            </div>
-        );
-    }
 
     return (
         <div className="min-h-screen bg-[#0A0A0A] relative overflow-hidden">
@@ -268,7 +188,7 @@ const BlogsPage = () => {
                                                         width={1920}
                                                         height={1080}
                                                         quality={100}
-                                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
                                                         loading="lazy"
                                                     />
                                                 ) : (
