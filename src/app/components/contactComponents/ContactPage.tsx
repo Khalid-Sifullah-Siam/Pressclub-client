@@ -68,7 +68,7 @@ const ContactPage = () => {
 
             {/* LinkedIn Card */}
             <a
-              href="http://www.linkedin.com/in/khalid-sifullah-siam-s"
+              href="http://www.linkedin.com/in/khalid-sifullah-siam"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative backdrop-blur-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-600/30 rounded-2xl p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-600/10 hover:-translate-y-2"
