@@ -1,36 +1,6 @@
 import Link from "next/link";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-const education = [
-  {
-    year: "2023 - Present",
-    degree: "B.Sc. (Honours) in Botany",
-    institution: "Netrakona Government College",
-    result: "Currently in 4th Year",
-  },
-  {
-    year: "2022",
-    degree: "Higher Secondary Certificate (HSC) — Science Group",
-    institution: "Alamgir Monsur (Mintu) Memorial College",
-    result: "GPA: 4.00 / 5.00",
-  },
-  {
-    year: "2020",
-    degree: "Secondary School Certificate (SSC) — Science Group",
-    result: "GPA: 5.00 / 5.00",
-  },
-  {
-    year: "2017",
-    degree: "Junior School Certificate (JSC)",
-    result: "GPA: 5.00 / 5.00",
-  },
-  {
-    year: "2014",
-    degree: "Primary School Certificate (PSC)",
-    result: "GPA: 5.00 / 5.00",
-  },
-];
-
 const AboutPage = () => {
   return (
     <div className="space-y-10 py-4">
@@ -92,33 +62,6 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section>
-        <h2 className="mb-5 text-2xl font-bold text-white">
-          Educational Qualification
-        </h2>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {education.map((item) => (
-            <article
-              key={`${item.year}-${item.degree}`}
-              className="rounded-xl border border-white/10 bg-white/5 p-5"
-            >
-              <p className="mb-2 text-sm font-bold text-orange-400">
-                {item.year}
-              </p>
-              <h3 className="font-bold text-white">{item.degree}</h3>
-              {item.institution && (
-                <p className="mt-1 text-sm text-gray-400">
-                  {item.institution}
-                </p>
-              )}
-              <p className="mt-3 text-sm font-semibold text-gray-200">
-                {item.result}
-              </p>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <div className="flex items-center justify-between">
         <div className="flex cursor-pointer items-center gap-2 rounded-md px-4 py-2 hover:bg-gray-900">
           <IoIosArrowBack />
@@ -127,8 +70,8 @@ const AboutPage = () => {
           </Link>
         </div>
         <div className="flex cursor-pointer items-center gap-2 rounded-md px-4 py-2 hover:bg-gray-900">
-          <Link href="/projects" className="font-bold text-white">
-            Projects
+          <Link href="/educational-qualification" className="font-bold text-white">
+            Education
           </Link>
           <IoIosArrowForward />
         </div>

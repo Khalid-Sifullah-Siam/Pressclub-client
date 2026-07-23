@@ -18,6 +18,7 @@ const SearchBox = () => {
         { label: "Home", href: "/", description: "Go to homepage" },
         { label: "Blogs", href: "/blogs", description: "Read our blog posts" },
         { label: "Projects", href: "/projects", description: "View my projects" },
+        { label: "Education", href: "/educational-qualification", description: "View my educational qualifications" },
         { label: "Contact", href: "/contact", description: "Get in touch" },
         { label: "LinkedIn", href: "https://www.linkedin.com/in/khalid-sifullah-siam?trk=contact-info", description: "Connect on LinkedIn" },
         { label: "GitHub", href: "https://github.com/Khalid-Sifullah-Siam", description: "Check my GitHub" },

@@ -1,6 +1,11 @@
 export const navItems = [
   { name: "Intro", href: "intro", path: "/intro" },
   { name: "About Me", href: "about", path: "/about" },
+  {
+    name: "Educational Qualification",
+    href: "educational-qualification",
+    path: "/educational-qualification",
+  },
   { name: "Projects", href: "projects", path: "/projects" },
   { name: "Skills & Tools", href: "skills-tools", path: "/skills-tools" },
   { name: "Experience", href: "experience", path: "/experience" },
