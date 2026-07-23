@@ -7,6 +7,7 @@ import {
   FaWhatsapp,
   FaLinkedin,
   FaFacebook,
+  FaPhoneAlt,
 } from "react-icons/fa";
 
 const ContactPage = () => {
@@ -31,7 +32,7 @@ const ContactPage = () => {
           </div>
 
           {/* Contact Options Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16 lg:mb-24">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8 mb-16 lg:mb-24">
             {/* Email Card */}
             <a
               href="mailto:khalidsiam1754@gmail.com"
@@ -47,6 +48,25 @@ const ContactPage = () => {
                 <p className="text-blue-400 font-semibold text-sm break-all">khalidsiam1754@gmail.com</p>
               </div>
             </a>
+
+            {/* Phone Card */}
+            <div className="group relative rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-orange-500/30 hover:bg-white/10 hover:shadow-2xl hover:shadow-orange-500/10">
+              <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-br from-orange-600/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="relative z-10">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-linear-to-br from-orange-600/30 to-orange-400/20 transition-transform duration-300 group-hover:scale-110">
+                  <FaPhoneAlt className="text-2xl text-orange-400" />
+                </div>
+                <h3 className="mb-3 text-xl font-bold text-white">Phone</h3>
+                <div className="space-y-2 text-sm font-semibold text-orange-400">
+                  <a className="block hover:text-orange-300" href="tel:+8801521745455">
+                    +880 1521-745455
+                  </a>
+                  <a className="block hover:text-orange-300" href="tel:+8801751926808">
+                    +880 1751-926808
+                  </a>
+                </div>
+              </div>
+            </div>
 
             {/* WhatsApp Card */}
             <a

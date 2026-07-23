@@ -16,6 +16,7 @@ type Project = {
   features: string[];
   challenges: string[];
   learnings: string[];
+  futurePlans: string[];
   links: { name: string; url: string }[];
   screenshots: string[];
 };
@@ -96,6 +97,18 @@ const ProjectDetailCard = ({ project }: { project: Project }) => {
         <ul className="list-disc list-inside space-y-1">
           {project.learnings.map((l, i) => (
             <li key={i}>{l}</li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Future Plans */}
+      <div>
+        <h2 className="text-lg font-semibold text-white mb-2">
+          Future Improvements
+        </h2>
+        <ul className="list-disc list-inside space-y-1">
+          {project.futurePlans.map((plan, i) => (
+            <li key={i}>{plan}</li>
           ))}
         </ul>
       </div>

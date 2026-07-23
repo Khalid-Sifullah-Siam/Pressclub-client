@@ -61,6 +61,11 @@ export const projects = [
       "Error Handling & User Feedback",
       "Responsive Design Patterns",
     ],
+    futurePlans: [
+      "Add personalized book recommendations based on reading and purchase history",
+      "Introduce author analytics, subscription plans, and advanced review moderation",
+      "Improve search performance with richer filters and indexed full-text search",
+    ],
     links: [
       {
         name: "Live Demo",
@@ -128,6 +133,11 @@ export const projects = [
       "Learned about data security and privacy best practices",
       "Improved skills in responsive design with Tailwind CSS",
     ],
+    futurePlans: [
+      "Improve the recommendation engine with safer and more relevant personalized feeds",
+      "Add stronger content moderation, reporting tools, and privacy controls",
+      "Optimize real-time calls and messaging for larger concurrent audiences",
+    ],
     links: [
       {
         name: "Live Demo",
@@ -186,6 +196,11 @@ export const projects = [
       "Learned about the importance of personalized recommendations in career development",
       "Improved skills in building user-friendly interfaces with Next.js and Tailwind CSS",
     ],
+    futurePlans: [
+      "Add AI-assisted career roadmaps that adapt to each user's goals and progress",
+      "Integrate verified job listings and application tracking",
+      "Expand resume analysis and mock interview feedback with measurable scoring",
+    ],
     links: [
       {
         name: "Live Demo",
@@ -241,6 +256,11 @@ export const projects = [
       "Learned about the importance of real-time features in developer tools",
       "Improved skills in creating user-friendly interfaces with React.js and Tailwind CSS",
     ],
+    futurePlans: [
+      "Add collaborative code execution with isolated and secure environments",
+      "Introduce project rooms, version history, and team permission controls",
+      "Improve editor performance and support more programming languages",
+    ],
     links: [
       {
         name: "Live Demo",
@@ -287,6 +307,11 @@ export const projects = [
       "Learned about the importance of personalized recommendations in education",
       "Improved skills in creating engaging learning materials with React.js and Tailwind CSS",
     ],
+    futurePlans: [
+      "Add progress tracking, certificates, quizzes, and instructor analytics",
+      "Introduce personalized learning paths based on skills and completed lessons",
+      "Improve accessibility and support downloadable lessons for low-connectivity users",
+    ],
     links: [
       {
         name: "Live Demo",
@@ -330,6 +355,11 @@ export const projects = [
     learnings: [
       "Gained experience in building management systems for educational institutions",
     ],
+    futurePlans: [
+      "Add automated attendance, exam result publishing, and guardian notifications",
+      "Introduce role-specific dashboards for students, teachers, parents, and administrators",
+      "Provide downloadable academic reports and institution-level analytics",
+    ],
     links: [
       {
         name: "Live Demo",
@@ -368,6 +398,11 @@ export const projects = [
       "Integrating various features seamlessly into a single platform",
     ],
     learnings: ["Gained experience in building websites for local communities"],
+    futurePlans: [
+      "Add a searchable digital archive for local news and press releases",
+      "Introduce reporter profiles, editorial approval workflows, and breaking-news notifications",
+      "Improve local event coverage and accessibility for readers on slower networks",
+    ],
     links: [
       {
         name: "Live Demo",
@@ -406,6 +441,11 @@ export const projects = [
     ],
     learnings: [
       "Gained experience in building platforms for service providers and customers",
+    ],
+    futurePlans: [
+      "Add provider verification, service-area mapping, and transparent customer reviews",
+      "Introduce secure online payments, booking schedules, and automated reminders",
+      "Build recommendation and dispute-resolution features to improve marketplace trust",
     ],
     links: [
       {
